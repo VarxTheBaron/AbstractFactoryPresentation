@@ -4,10 +4,8 @@ public static class IVehicleFactoryResolver
 
     static public IVehicleFactory GetVehicleFactory(string factoryKey)
     {
-        foreach (var factory in factories)
-        {
-            if (factory.Key == factoryKey) return factory.Value;
-        }
+        if (factories.ContainsKey(factoryKey))
+            return factories[factoryKey];
 
         throw new InvalidDataException();
     }
