@@ -3,28 +3,14 @@
     private static void Main(string[] args)
     {
         Console.WriteLine("Select the type of car to create:");
-        Console.WriteLine("1. Gasoline Car");
-        Console.WriteLine("2. Diesel Car");
-        Console.WriteLine("3. Electrical Car");
+        Console.WriteLine("1. gasoline");
+        Console.WriteLine("2. diesel");
+        Console.WriteLine("3. electrical");
 
         string input = Console.ReadLine() ?? "";
 
-        switch (input)
-        {
-            case "1":
-                RunCar(new GasolineCarFactory());
-                break;
-            case "2":
-                RunCar(new DieselCarFactory());
-                break;
-            case "3":
-                RunCar(new ElectricalCarFactory());
-                break;
 
-            default:
-                Console.WriteLine("Invalid input. Please enter 1, 2, or 3.");
-                break;
-        }
+        RunCar(IVehicleFactoryResolver.GetVehicleFactory(input));
     }
 
     public static void RunCar(IVehicleFactory factory)
