@@ -1,9 +1,8 @@
-public class IVehicleFactoryResolver
+public static class IVehicleFactoryResolver
 {
-    private Dictionary<string, IVehicleFactory> factories = new();
+    static private Dictionary<string, IVehicleFactory> factories = new();
 
-
-    public IVehicleFactory GetVehicleFactory(string factoryKey)
+    static public IVehicleFactory GetVehicleFactory(string factoryKey)
     {
         foreach (var factory in factories)
         {
@@ -13,7 +12,7 @@ public class IVehicleFactoryResolver
         throw new InvalidDataException();
     }
 
-    public void AddFactory(string key, IVehicleFactory vehicleFactory)
+    static public void AddFactory(string key, IVehicleFactory vehicleFactory)
     {
         factories.Add(key, vehicleFactory);
     }
