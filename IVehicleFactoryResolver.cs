@@ -1,14 +1,20 @@
 public class IVehicleFactoryResolver
 {
-    public IVehicleFactory GetVehicleFactory(string factoryName)
+    private Dictionary<string, IVehicleFactory> factories = new();
+
+
+    public IVehicleFactory GetVehicleFactory(string factoryKey)
     {
-        if (factoryName == "gasoline")
-            return new GasolineCarFactory();
-        else if (factoryName == "diesel")
-            return new DieselCarFactory();
-        else if (factoryName == "electric")
-            return new ElectricalCarFactory();
-        else
-            throw new InvalidDataException();
+        foreach (var factory in factories)
+        {
+            if (factory.Key == factoryKey) return factory.Value;
+        }
+
+        throw new InvalidDataException();
+    }
+
+    public void AddFactory(string key, IVehicleFactory vehicleFactory)
+    {
+        factories.Add(key, vehicleFactory);
     }
 }
