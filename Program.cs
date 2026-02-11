@@ -44,9 +44,11 @@
 
 		public void ShowInfo()
 		{
+			Console.ForegroundColor = ConsoleColor.Yellow;
 			Console.WriteLine($"Engine: {engine.GetSpecs()}");
 			Console.WriteLine($"Interior: {interior.GetStyle()}");
 			Console.WriteLine($"Wheel: {wheel.GetWheelType()}");
+			Console.ResetColor();
 		}
 	}
 }
