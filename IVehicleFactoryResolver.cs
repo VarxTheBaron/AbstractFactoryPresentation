@@ -1,24 +1,24 @@
 public static class IVehicleFactoryResolver
 {
-	static private Dictionary<string, IVehicleFactory> factories = new();
+    static private Dictionary<string, IVehicleFactory> factories = new();
 
-	static IVehicleFactoryResolver()
-	{
-		AddFactory("car", new DieselCarFactory());
-		AddFactory("truck", new GasolineCarFactory());
-		AddFactory("electric", new ElectricalCarFactory());
-	}
+    static IVehicleFactoryResolver()
+    {
+        AddFactory("diesel", new DieselCarFactory());
+        AddFactory("gasoline", new GasolineCarFactory());
+        AddFactory("electric", new ElectricalCarFactory());
+    }
 
-	static public IVehicleFactory GetVehicleFactory(string factoryKey)
-	{
-		if (factories.ContainsKey(factoryKey))
-			return factories[factoryKey];
+    static public IVehicleFactory GetVehicleFactory(string factoryKey)
+    {
+        if (factories.ContainsKey(factoryKey))
+            return factories[factoryKey];
 
-		throw new InvalidDataException();
-	}
+        throw new InvalidDataException();
+    }
 
-	static public void AddFactory(string key, IVehicleFactory vehicleFactory)
-	{
-		factories.Add(key, vehicleFactory);
-	}
+    static public void AddFactory(string key, IVehicleFactory vehicleFactory)
+    {
+        factories.Add(key, vehicleFactory);
+    }
 }
